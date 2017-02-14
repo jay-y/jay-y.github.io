@@ -6,17 +6,36 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://jay-y.github.io">
-  <title>Archives | 逐梦者</title>
+  <title>Unix/Linux---命令备忘录 | 逐梦者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Write the code. Change the world.">
+  <meta name="description" content="##ps:是显示瞬间进程的状态，并不动态连续// 在Linux下查看所有java进程命令
+ps -ef | grep java：
+##kill:用于杀死进程或者给进程发送信号// 停止所有java进程命令
+kill -9 java    
+// 停止特定java进程命令
+kill -9 java进程序号 
+##arp:ARP缓存中包含一个或多个表，它们用于存储IP地址及其经过解析的MAC地址//">
 <meta property="og:type" content="website">
-<meta property="og:title" content="逐梦者">
-<meta property="og:url" content="http://jay-y.github.io/archives/index.html">
+<meta property="og:title" content="Unix/Linux---命令备忘录">
+<meta property="og:url" content="http://jay-y.github.io/essay/index.html">
 <meta property="og:site_name" content="逐梦者">
-<meta property="og:description" content="Write the code. Change the world.">
+<meta property="og:description" content="##ps:是显示瞬间进程的状态，并不动态连续// 在Linux下查看所有java进程命令
+ps -ef | grep java：
+##kill:用于杀死进程或者给进程发送信号// 停止所有java进程命令
+kill -9 java    
+// 停止特定java进程命令
+kill -9 java进程序号 
+##arp:ARP缓存中包含一个或多个表，它们用于存储IP地址及其经过解析的MAC地址//">
+<meta property="og:updated_time" content="2017-02-14T14:54:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="逐梦者">
-<meta name="twitter:description" content="Write the code. Change the world.">
+<meta name="twitter:title" content="Unix/Linux---命令备忘录">
+<meta name="twitter:description" content="##ps:是显示瞬间进程的状态，并不动态连续// 在Linux下查看所有java进程命令
+ps -ef | grep java：
+##kill:用于杀死进程或者给进程发送信号// 停止所有java进程命令
+kill -9 java    
+// 停止特定java进程命令
+kill -9 java进程序号 
+##arp:ARP缓存中包含一个或多个表，它们用于存储IP地址及其经过解析的MAC地址//">
   
     <link rel="alternative" href="/atom.xml" title="逐梦者" type="application/atom+xml">
   
@@ -156,49 +175,171 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/02/10/hello-world/" class="archive-article-date">
-  	<time datetime="2017-02-10T15:18:13.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/02/10/hello-world/">Hello World</a>
+    <h1 class="article-title" itemprop="name">
+      Unix/Linux---命令备忘录
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+        
+        <a href="/essay/index.html" class="archive-article-date">
+  	<time datetime="2017-02-10T18:04:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>##ps:是显示瞬间进程的状态，并不动态连续<br>// 在Linux下查看所有java进程命令</p>
+<p>ps -ef | grep java：</p>
+<p>##kill:用于杀死进程或者给进程发送信号<br>// 停止所有java进程命令</p>
+<p>kill -9 java    </p>
+<p>// 停止特定java进程命令</p>
+<p>kill -9 java进程序号 </p>
+<p>##arp:ARP缓存中包含一个或多个表，它们用于存储IP地址及其经过解析的MAC地址<br>// 提取出所有Bound0的ip信息与mac信息</p>
+<p>arp -n -i bond0 | awk ‘$5==”bond0” {print $1,$3}’</p>
+<p>##sed:用来把文档或字符串里面的文字经过一系列编辑命令<br>// 从/script/ip读取单行数据后打印出来</p>
+<p>sed -n ‘1p’ /script/ip</p>
+<p>// 替换windows中换行符在linux中出现的问题</p>
+<p>sed -i ‘s/^M//g’ filename</p>
+<p>注意：^M的输入方式是 Ctrl + v ，然后Ctrl + M</p>
+<p>##iptables:是与最新的 3.5 版本 Linux 内核集成的 IP信息包过滤系统</p>
+<p>iptables  -t filter –(…) //filter数据包过滤表</p>
+<p>iptables  -t nat –(…) // nat数据包转换表</p>
+<p>iptables  -t mangle –(…) // mangle指定处理数据包表</p>
+<p>##crontab:用于设置周期性被执行的指令，该命令从标准输入设备读取指令，并将其存放于“crontab”文件中，以供之后读取和执行。</p>
+<p>###编辑计划任务列表</p>
+<p>vi /etc/crontab</p>
+<p>// 每分钟执行xxx</p>
+<p><em>/1 </em> <em> </em> *  xxx</p>
+<p>// 每天2点20分执行 xxx</p>
+<p>20 2 <em> </em> * xxx</p>
+<p>// 在12月内，每天的早上6点到12点中，每隔20分钟执行xxx</p>
+<p><em>/20 6-12 </em> 12 * xxx</p>
+<p>// 周一到周五每天下午5:00执行xxx</p>
+<p>0 17 <em> </em> 1-5 xxx</p>
+<p>##tar:压缩打包文件等，Unix/Linux系统中备份文件的可靠方法，几乎可以工作于任何环境中，它的使用权限是所有用户。</p>
+<p>例如:将整个/xxx 目录下的文件全部打包成为 /tmp/xxx.tar</p>
+<p>tar -cvf /tmp/xxx.tar /xxx　　　　&lt;==仅打包，不压缩！</p>
+<p>tar -zcvf /tmp/xxx.tar.gz /xxx　　&lt;==打包后，以 gzip 压缩</p>
+<p>tar -jcvf /tmp/xxx.tar.bz2 /xxx　　&lt;==打包后，以 bzip2 压缩</p>
+<p>注意：出现tar: Removing leading `/“ from member names异常，原因是由于绝对路径的特殊设定影响的，解决用tar -zcvfP，也就是在辅项加P</p>
 
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/images/alipay.jpeg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/images/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://jay-y.github.io/essay/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-  
-    </div></section>
+
   
 
-    
+
+
+
+
+  
+    <div class="duoshuo"></div>
+  
+
+
 
 
           </div>
@@ -223,7 +364,7 @@
 		mathjax: false,
 		isHome: false,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
