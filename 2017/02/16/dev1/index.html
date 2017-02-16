@@ -6,17 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://jay-y.github.io">
-  <title>Archives: 2014 | 逐梦者</title>
+  <title>设计模式简介 | 逐梦者</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Write the code. Change the world.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="逐梦者">
-<meta property="og:url" content="http://jay-y.github.io/archives/2014/index.html">
+  <meta name="description" content="设计模式总览创建型模式(五种)工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式
+结构型模式(七种)适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式
+行为型模式(十一种)策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式
+设计模式的六大原则开闭原则开闭原则就是说对扩展开放，对修改关闭；在程序">
+<meta property="og:type" content="article">
+<meta property="og:title" content="设计模式简介">
+<meta property="og:url" content="http://jay-y.github.io/2017/02/16/dev1/index.html">
 <meta property="og:site_name" content="逐梦者">
-<meta property="og:description" content="Write the code. Change the world.">
+<meta property="og:description" content="设计模式总览创建型模式(五种)工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式
+结构型模式(七种)适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式
+行为型模式(十一种)策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式
+设计模式的六大原则开闭原则开闭原则就是说对扩展开放，对修改关闭；在程序">
+<meta property="og:updated_time" content="2017-02-16T07:49:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="逐梦者">
-<meta name="twitter:description" content="Write the code. Change the world.">
+<meta name="twitter:title" content="设计模式简介">
+<meta name="twitter:description" content="设计模式总览创建型模式(五种)工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式
+结构型模式(七种)适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式
+行为型模式(十一种)策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式
+设计模式的六大原则开闭原则开闭原则就是说对扩展开放，对修改关闭；在程序">
   
     <link rel="alternative" href="/atom.xml" title="逐梦者" type="application/atom+xml">
   
@@ -156,174 +166,167 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-dev1" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      设计模式简介
+    </h1>
+  
+
+        
+        <a href="/2017/02/16/dev1/" class="archive-article-date">
+  	<time datetime="2017-02-16T07:21:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-16</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设计模式总览"><a href="#设计模式总览" class="headerlink" title="设计模式总览"></a>设计模式总览</h2><h3 id="创建型模式-五种"><a href="#创建型模式-五种" class="headerlink" title="创建型模式(五种)"></a>创建型模式(五种)</h3><p>工厂方法模式、抽象工厂模式、单例模式、建造者模式、原型模式</p>
+<h3 id="结构型模式-七种"><a href="#结构型模式-七种" class="headerlink" title="结构型模式(七种)"></a>结构型模式(七种)</h3><p>适配器模式、装饰器模式、代理模式、外观模式、桥接模式、组合模式、享元模式</p>
+<h3 id="行为型模式-十一种"><a href="#行为型模式-十一种" class="headerlink" title="行为型模式(十一种)"></a>行为型模式(十一种)</h3><p>策略模式、模板方法模式、观察者模式、迭代子模式、责任链模式、命令模式、备忘录模式、状态模式、访问者模式、中介者模式、解释器模式</p>
+<h2 id="设计模式的六大原则"><a href="#设计模式的六大原则" class="headerlink" title="设计模式的六大原则"></a>设计模式的六大原则</h2><h3 id="开闭原则"><a href="#开闭原则" class="headerlink" title="开闭原则"></a>开闭原则</h3><p>开闭原则就是说对扩展开放，对修改关闭；<br>在程序需要进行拓展的时候，不能去修改原有的代码，实现一个热插拔的效果，所以一句话概括就是：为了使程序的扩展性好，易于维护和升级；<br>想要达到这样的效果，我们需要使用接口和抽象类。</p>
+<h3 id="里氏代换原则"><a href="#里氏代换原则" class="headerlink" title="里氏代换原则"></a>里氏代换原则</h3><p>任何基类可以出现的地方，子类一定可以出现；<br>继承复用的基石，只有当衍生类可以替换掉基类，软件单位的功能不受到影响时，基类才能真正被复用，而衍生类也能够在基类的基础上增加新的行为；<br>里氏代换原则是对“开-闭”原则的补充，实现“开-闭”原则的关键步骤就是抽象化，而基类与子类的继承关系就是抽象化的具体实现，所以里氏代换原则是对实现抽象化的具体步骤的规范。</p>
+<h3 id="依赖倒转原则"><a href="#依赖倒转原则" class="headerlink" title="依赖倒转原则"></a>依赖倒转原则</h3><p>这个是开闭原则的基础，具体内容：针对接口编程，依赖于抽象而不依赖于具体。</p>
+<h3 id="接口隔离原则"><a href="#接口隔离原则" class="headerlink" title="接口隔离原则"></a>接口隔离原则</h3><p>使用多个隔离的接口，比使用单个接口要好，还是一个降低类之间的耦合度的意思。</p>
+<h3 id="迪米特法则"><a href="#迪米特法则" class="headerlink" title="迪米特法则"></a>迪米特法则</h3><p>为什么叫最少知道原则，就是说：一个实体应当尽量少的与其他实体之间发生相互作用，使得系统功能模块相对独立。</p>
+<h3 id="合成复用原则"><a href="#合成复用原则" class="headerlink" title="合成复用原则"></a>合成复用原则</h3><p>原则是尽量使用合成/聚合的方式，而不是使用继承。</p>
+<h4 id="注-设计模式就是软件的设计思想，从大型软件架构出发，为了升级和维护方便。"><a href="#注-设计模式就是软件的设计思想，从大型软件架构出发，为了升级和维护方便。" class="headerlink" title="注:设计模式就是软件的设计思想，从大型软件架构出发，为了升级和维护方便。"></a>注:设计模式就是软件的设计思想，从大型软件架构出发，为了升级和维护方便。</h4>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/images/alipay.jpeg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/assets/images/wechat.jpeg">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2014" class="archive-year">2014</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/09/23/note4/" class="archive-article-date">
-  	<time datetime="2014-09-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-23</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/09/23/note4/">2014年09月23日</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://jay-y.github.io/2017/02/16/dev1/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/09/18/note3/" class="archive-article-date">
-  	<time datetime="2014-09-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-18</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/09/18/note3/">2014年09月18日</a>
-    </h1>
+  
+    <a href="/2017/02/16/note9/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">2017年02月16日</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+  
+    <div class="duoshuo"></div>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/09/15/note2/" class="archive-article-date">
-  	<time datetime="2014-09-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/09/15/note2/">2014年09月16日</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2014/09/15/note1/" class="archive-article-date">
-  	<time datetime="2014-09-14T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2014/09/15/note1/">2014年09月15日</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
 
 
           </div>
@@ -347,8 +350,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
