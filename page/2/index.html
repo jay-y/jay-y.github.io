@@ -164,6 +164,523 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-c2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/18/c2/">错误C1083解决(VS2010及以上)</a>
+    </h1>
+  
+
+        
+        <a href="/2015/03/18/c2/" class="archive-article-date">
+  	<time datetime="2015-03-18T03:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>“error C1083”这个错误是因为VS中C/C++常规配置中加载头文件的路径问题。</p>
+<blockquote>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>1) 右键查看该项目的属性<br>2) 点击属性——〉配置属性  ——〉C/C++  ——〉  常规  ——〉附加包含目录 ——〉编辑<br>3) 添加<br>$(ProjectDir) //工程目录<br>$(ProjectDir)inc //工程子目录</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/03/18/c2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-c1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/18/c1/">C++调用C文件使用实例</a>
+    </h1>
+  
+
+        
+        <a href="/2015/03/18/c1/" class="archive-article-date">
+  	<time datetime="2015-03-18T03:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="C-调用C-h文件使用实例"><a href="#C-调用C-h文件使用实例" class="headerlink" title="C++调用C.h文件使用实例"></a>C++调用C.h文件使用实例</h2><h3 id="工程结构"><a href="#工程结构" class="headerlink" title="工程结构"></a>工程结构</h3><p><img src="http://images.cnitblog.com/blog2015/724687/201503/181126119071430.png" alt="工程结构"></p>
+<p>###exercise.h code<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#ifndef _EXERCISE_H_</div><div class="line">#define _EXERCISE_H_</div><div class="line">#include &lt;externcpp.h&gt;;</div><div class="line">extern &quot;C&quot;  </div><div class="line">&#123;  </div><div class="line">  #include &lt;externc.h&gt;;</div><div class="line">&#125;</div><div class="line">#endif</div></pre></td></tr></table></figure></p>
+<h3 id="externc-h-code"><a href="#externc-h-code" class="headerlink" title="externc.h code"></a>externc.h code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#ifndef _EXTERNC_H_</div><div class="line">#define _EXTERNC_H_</div><div class="line">#include &lt;stdio.h&gt;;</div><div class="line"></div><div class="line">void c_hello();</div><div class="line"></div><div class="line">#endif</div></pre></td></tr></table></figure>
+<h2 id="externcpp-h-code"><a href="#externcpp-h-code" class="headerlink" title="externcpp.h code"></a>externcpp.h code</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#ifndef _EXTERNCPP_H_</div><div class="line">#define _EXTERNCPP_H_</div><div class="line">#include &lt;iostream&gt;;</div><div class="line">using namespace std;</div><div class="line"></div><div class="line">void cpp_hello();</div><div class="line"></div><div class="line">#endif</div></pre></td></tr></table></figure>
+<h3 id="c-hello-c-code"><a href="#c-hello-c-code" class="headerlink" title="c_hello.c code"></a>c_hello.c code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;externc.h&gt;;</div><div class="line"></div><div class="line">void c_hello()&#123;</div><div class="line">    printf(&quot;C Hello World!&quot;);</div><div class="line">    getchar();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="cpp-hello-cpp-code"><a href="#cpp-hello-cpp-code" class="headerlink" title="cpp_hello.cpp code"></a>cpp_hello.cpp code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;externcpp.h&gt;;</div><div class="line"></div><div class="line">void cpp_hello()&#123;</div><div class="line">    cout&lt;&lt;&quot;C++ Hello World!&quot;;</div><div class="line">    getchar();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="main-cpp-code"><a href="#main-cpp-code" class="headerlink" title="main.cpp code"></a>main.cpp code</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#include &lt;exercise.h&gt;</div><div class="line"></div><div class="line">void main()&#123;</div><div class="line">    c_hello();</div><div class="line">    cpp_hello();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/03/18/c1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-python1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/11/python1/">遍历本地文件系统</a>
+    </h1>
+  
+
+        
+        <a href="/2015/03/11/python1/" class="archive-article-date">
+  	<time datetime="2015-03-11T04:06:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>遍历本地文件系统 (sys, os, path)，例如写一个程序统计一个目录下所有文件大小并按各种条件排序并保存结果。</p>
+<h4 id="代码如下"><a href="#代码如下" class="headerlink" title="代码如下"></a>代码如下</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div></pre></td><td class="code"><pre><div class="line">#coding:GBK</div><div class="line">import os;</div><div class="line"></div><div class="line">def SortList(item):</div><div class="line">    return item[1];</div><div class="line"></div><div class="line">def ReadSize(fileName):</div><div class="line">    return float(os.path.getsize(fileName));</div><div class="line"></div><div class="line">def WriteAll(path):</div><div class="line">    l = []</div><div class="line">    loger = open(&quot;test.log&quot;,&quot;w&quot;);</div><div class="line">    writer = open(&quot;path.txt&quot;,&quot;w&quot;);</div><div class="line">    reader = open(&quot;path.txt&quot;,&quot;r&quot;);</div><div class="line">    size = 0;</div><div class="line">    for root,dirs,files in os.walk(path):</div><div class="line">        for filesPath in files:</div><div class="line">            try:</div><div class="line">                fllePath = os.path.join(root,filesPath);</div><div class="line">                fileSize = float(ReadSize(fllePath)/1024);</div><div class="line">                size += fileSize;</div><div class="line">                x = (fllePath,int(fileSize));</div><div class="line">                l.append(x);</div><div class="line">            except:</div><div class="line">                loger.write(&quot;读取:&quot;+os.path.join(root,filesPath)+&quot;文件大小失败!\n&quot;);</div><div class="line">                continue;</div><div class="line">    l = sorted(l,key=SortList,reverse=True);</div><div class="line">    for item in l:</div><div class="line">        strTmp = &quot;&quot;;</div><div class="line">        if float(item[1]/1024) &gt; 1024:</div><div class="line">            strTmp = item[0]+&quot; &quot;+str(int(float(item[1]/1024/1024)))+&quot;GB\n&quot;;</div><div class="line">        elif item[1] &gt; 1024:</div><div class="line">            strTmp = item[0]+&quot; &quot;+str(int(float(item[1]/1024)))+&quot;MB\n&quot;;                           </div><div class="line">        else:</div><div class="line">            strTmp = item[0]+&quot; &quot;+str(item[1])+&quot;KB\n&quot;;</div><div class="line">                                     </div><div class="line">        writer.write(strTmp);</div><div class="line">    writer.write(&quot;共使用磁盘空间:&quot;+str(float(size/1024))+&quot;MB&quot;);</div><div class="line">    loger.close();</div><div class="line">    writer.close();</div><div class="line">    print(reader.read());</div><div class="line">    reader.close();</div><div class="line"></div><div class="line">fileName = os.getcwd();</div><div class="line">WriteAll(fileName);</div><div class="line">raw_input(&quot;END...&quot;);</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/03/11/python1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-php1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/06/php1/">LAMP快速部署</a>
+    </h1>
+  
+
+        
+        <a href="/2015/03/06/php1/" class="archive-article-date">
+  	<time datetime="2015-03-06T01:44:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>需要准备环境<br>Linux CentOS 6.3 X64、Apache2、MySql、PHP</p>
+</blockquote>
+<h3 id="安装相关环境及组件"><a href="#安装相关环境及组件" class="headerlink" title="安装相关环境及组件"></a>安装相关环境及组件</h3><p>用ROOT账户进入系统后，开始安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">#yum install httpd //安装apache</div><div class="line">#yum install php //安装php模块</div><div class="line">#yum install php-mysql php-gd php-imap php-ldap php-odbc php-pear php-xml php-xmlrpc //安装PHP支持这些组件</div><div class="line">#yum install php-mysql //安装php支持mysql</div></pre></td></tr></table></figure></p>
+<h3 id="测试运行"><a href="#测试运行" class="headerlink" title="测试运行"></a>测试运行</h3><p>1) 启动apache；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#/etc/init.d/httpd start //启动apache</div></pre></td></tr></table></figure></p>
+<p>2) 需要时可以查看apache运行状态；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#/etc/init.d/httpd status</div></pre></td></tr></table></figure></p>
+<p>3) 现在可以在浏览器中打开 <a href="http://localhost" target="_blank" rel="external">http://localhost</a> 或 <a href="http://127.0.0.1" target="_blank" rel="external">http://127.0.0.1</a> ，看到 Apache 2 Test Page 页面；<br>4) 简单测试下是否支持PHP；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">#vi /var/www/html/test.php</div><div class="line">进入后，按i看到-- INSERT --就可以编辑了</div><div class="line"></div><div class="line">复制下面的测试代码</div><div class="line">&lt;?php</div><div class="line">    phpinfo();</div><div class="line">?&gt;</div><div class="line">按键盘上的Esc键后，按:wq保存并退出</div></pre></td></tr></table></figure></p>
+<p>5) 再用浏览器中打开 <a href="http://localhost/test.php" target="_blank" rel="external">http://localhost/test.php</a> 或 <a href="http://127.0.0.1/test.php" target="_blank" rel="external">http://127.0.0.1/test.php</a><br>你会看到很多模块都可以在PHP中使用了。</p>
+<p>这样LAMP就都部署完毕了</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/03/06/php1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-diary5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/02/25/diary5/">2015年02月25日</a>
+    </h1>
+  
+
+        
+        <a href="/2015/02/25/diary5/" class="archive-article-date">
+  	<time datetime="2015-02-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="自省"><a href="#自省" class="headerlink" title="自省"></a>自省</h2><blockquote>
+<ol>
+<li>开发工作中，最主要的还是个人实力的提高；</li>
+<li>很多东西，不仅要会，还要精；</li>
+<li>还要学会自己去学习，不然往往很多东西其实你并不具备，却夜郎自大！</li>
+</ol>
+</blockquote>
+<h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><h3 id="自身问题"><a href="#自身问题" class="headerlink" title="自身问题"></a>自身问题</h3><ol>
+<li>主要是因为自己太懒；</li>
+<li>工作中很多问题往往是技术上或者业务理解上的，这个需要知识和经验的积累；</li>
+<li>还是不够努力，以后出现过的问题记录下来，避免重复出现。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/02/25/diary5/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-diary4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/23/diary4/">2014年09月23日</a>
+    </h1>
+  
+
+        
+        <a href="/2014/09/23/diary4/" class="archive-article-date">
+  	<time datetime="2014-09-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><h3 id="工作态度"><a href="#工作态度" class="headerlink" title="工作态度"></a>工作态度</h3><ol>
+<li>在公司开发，要完成自己身份上的转变，你不再是在校的学生，而领导也不再是纠错的老师，每个分配的任务，都要尽自己最大的能力去开发，并避免错误出现，如果你不能给公司带来收益，反而带来一堆的BUG，前途可想而知……；</li>
+<li>代码的质量问题，开发过程中，不要只想着如何去完成需求，还要想着在完成需求的同时，怎样优化自己的代码，让自己的代码更强，甚至可以循环利用，逻辑上的错误问题千万不要出现；</li>
+<li>多用不同的角度去看待开发问题，学会以客户的角度去开发，让实现的功能更智能化，让各种提示信息更贴近人们的需要；</li>
+<li>代码规范问题依然是重点。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/09/23/diary4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-diary3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2014/09/18/diary3/">2014年09月18日</a>
+    </h1>
+  
+
+        
+        <a href="/2014/09/18/diary3/" class="archive-article-date">
+  	<time datetime="2014-09-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><h3 id="怎样减少BUG问题"><a href="#怎样减少BUG问题" class="headerlink" title="怎样减少BUG问题"></a>怎样减少BUG问题</h3><ol>
+<li>所有编码按要求去做CheckList；</li>
+<li>多做测试，尽可能的不要自己去测试自己的代码(总认为自己没啥问题～(0。0)～)，可以利用自动化测试工具。<h3 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h3></li>
+<li>页面注意问题：多余空行、多余标记、多余加载、编码规范、页面ID命名带项目该模块的编号；</li>
+<li>JS注意问题：全局变量命名空间统一、变量命名规范化（一般由两个或多个英语单词组成首单词用名词第二个单词首字母大写）、方法命名规范化（一般由两个或多个英语单词组成首单词用动词第二个单词首字母大写）、注释规范化；</li>
+<li>类注意问题：常量定义规范，代码基本上能加注释的地方都加上注释，为了自己以后能懂，也为了别人开发时能看懂，不允许在方法运行中声明变量，应统一在起始处全部声明。</li>
+<li>CheckList、版本控制需谨慎。</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日记</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2014/09/18/diary3/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-diary2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -375,485 +892,9 @@
 
 
   
-    <article id="post-myss4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/02/07/myss4/">心默言•其四</a>
-    </h1>
-  
-
-        
-        <a href="/2013/02/07/myss4/" class="archive-article-date">
-  	<time datetime="2013-02-06T16:04:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>月霓裳，雾轻扬，花梦语情殇，双弓影藏杯中醉，血战沙场；<br>初晓未央，朱丹影，赏红霞微醺，提笔泼墨，穹苍下，皆是江山。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">心默言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/02/07/myss4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-myss3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/02/05/myss3/">心默言•其三</a>
-    </h1>
-  
-
-        
-        <a href="/2013/02/05/myss3/" class="archive-article-date">
-  	<time datetime="2013-02-04T16:03:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>三更月凉美人笑，苍雷吼，妖娆影珏，昙现如梦；<br>一夜春去红颜老，离人泪，晚风轻扰，花落尽，雨无终。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">心默言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/02/05/myss3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-myss2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/02/01/myss2/">心默言•其二</a>
-    </h1>
-  
-
-        
-        <a href="/2013/02/01/myss2/" class="archive-article-date">
-  	<time datetime="2013-01-31T16:02:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-02-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>夜雨苍凉，月无光，风作琉璃，枯灯晃，影成双；<br>故园外，花影无踪，静赏芳华一地，泪落惜谁？</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">心默言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/02/01/myss2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-myss1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2013/01/01/myss1/">心默言•其一</a>
-    </h1>
-  
-
-        
-        <a href="/2013/01/01/myss1/" class="archive-article-date">
-  	<time datetime="2012-12-31T16:01:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2013-01-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>幻梦似伤曾断肠？心微凉，念若狂，说无恙，皆是心伤；<br>庭前晚枫已红妆，叶落无相，枫随风扬，坐亭上，多是凄凉；<br>仰望远山日昏黄，血残阳，多少辉煌，心静处，痛成殇。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">心默言</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2013/01/01/myss1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mysh10" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2011/09/22/mysh10/">心静音•其十</a>
-    </h1>
-  
-
-        
-        <a href="/2011/09/22/mysh10/" class="archive-article-date">
-  	<time datetime="2011-09-21T16:10:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2011-09-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>百花过季，岁月如戏，又过几场？枯了多少？<br>十年一瞬，人生幻梦，又醒几回？知了多少？<br>一错百错，行途似刃，又伤几次？悔了多少？</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">心静音</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2011/09/22/mysh10/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mysh9" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2011/09/22/mysh9/">心静音•其九</a>
-    </h1>
-  
-
-        
-        <a href="/2011/09/22/mysh9/" class="archive-article-date">
-  	<time datetime="2011-09-21T16:09:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2011-09-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>烛火烟绕花似景，沉醉其间，梦里可知岁月春秋几何？<br>无论是非，不顾世事，坐等一人，哪怕南柯一梦，我似烂柯人；<br>重奏心曲为一人，曲罢终断，然吾心永恒！</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">心静音</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2011/09/22/mysh9/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-mysh8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2011/09/01/mysh8/">心静音•其八</a>
-    </h1>
-  
-
-        
-        <a href="/2011/09/01/mysh8/" class="archive-article-date">
-  	<time datetime="2011-08-31T16:08:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2011-09-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <blockquote>
-<p>错过，过错，又怎知谁错?世事纷扰，为何不躲?<br>滚滚红尘留过，怎看破?不知我心，何必恼我，只是无奈流水过；<br>又是一夜，过，过，过，一切梦过。</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">心静音</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2011/09/01/mysh8/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -945,6 +986,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
@@ -953,7 +998,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -966,6 +1019,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">心默言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">

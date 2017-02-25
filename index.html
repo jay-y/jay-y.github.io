@@ -503,6 +503,173 @@
 
 
   
+    <article id="post-java1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/10/13/java1/">SpringMVC关于前台传值转换问题</a>
+    </h1>
+  
+
+        
+        <a href="/2016/10/13/java1/" class="archive-article-date">
+  	<time datetime="2016-10-13T02:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-13</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Cannot convert value of type [java.lang.String] to required type [java.util.List].</p>
+<blockquote>
+<h3 id="问题在于-String-to-Entity"><a href="#问题在于-String-to-Entity" class="headerlink" title="问题在于:(String to Entity)"></a>问题在于:(String to Entity)</h3><p>Post-&gt;types:0xxxx,1xxxx,2xxxx<br>Entity-&gt;List<type> or Set<type><br>Type-&gt;必须要有有参构造函数存在才能被转换成功</type></type></p>
+<h3 id="例"><a href="#例" class="headerlink" title="例"></a>例</h3><p>public Type(){}<br>public Type(String id){this.id=id}</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/10/13/java1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-android1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/09/21/android1/">Eclipse项目转移到Android Studio遇到的问题</a>
+    </h1>
+  
+
+        
+        <a href="/2016/09/21/android1/" class="archive-article-date">
+  	<time datetime="2016-09-21T05:06:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-09-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-Android-Studio直接导入项目是copy原项目的，无法纳入代码管控"><a href="#1-Android-Studio直接导入项目是copy原项目的，无法纳入代码管控" class="headerlink" title="1) Android Studio直接导入项目是copy原项目的，无法纳入代码管控"></a>1) Android Studio直接导入项目是copy原项目的，无法纳入代码管控</h3><blockquote>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><p>英文地址：<a href="http://developer.android.com/sdk/installing/migrate.html" target="_blank" rel="external">http://developer.android.com/sdk/installing/migrate.html</a><br>翻译：Android Studio 中文组（大锤译）<br>如果你之前有用Eclipse做过安卓开发，现在想要把Eclipse中的项目导入到Android Studio的环境中，那么首先要做的是生成Build Gradle的文件。因为Android Studio 是用Gradle来管理项目的，具体操作步骤如下：<br>从Eclipse中导出<br>1) 将你的ADT插件版本升级到22.0以上。<br>2) 在Eclipse中，选择File–&gt;Export。<br>3) 在弹出的导出窗口中，打开Android的文件夹，选择“Generate Gradle Build Files”。<br>4) 选中你想要导入到Android Studio中的项目，Finish。</p>
+<p>PS:导出的项目将会和原来的项目在同一目录，覆盖原来的同时，会新增一个叫build.gradle的文件，导入Android Studio时将首先读取这个文件。</p>
+<p>导入到Android Studio<br>1) 在Android Studio 中，首先关掉你当前的打开的项目。<br>2) 在欢迎界面，点击Import Project（注：也是可以直接在菜单选择Import project的）<br>3) 选中你在Eclipse中导出的项目，展开目录，点击build.gradle文件，然后OK<br>4) 在之后的弹出对话框中，会要求你选择Gradle的配置，选中Use gradle wrapper.(注：也可以自定义你本机装的Gradle)</p>
+</blockquote>
+<p>PS：如果没有Grade build文件，也是可以将普通的安卓项目导入到Android Studio中，它会用现有的Ant build.但为了更好地使用之后的功能和充分使用构建变量，还是强烈地建议先从ADT插件中生成Gradle文件再导入Android Studio</p>
+<h3 id="2-编译错误1"><a href="#2-编译错误1" class="headerlink" title="2) 编译错误1"></a>2) 编译错误1</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">Error:duplicate files during packaging of APK D:\work\xxx\build\outputs\apk\xxx-debug-unaligned.apk</div><div class="line">Path in archive: META-INF/LICENSE.txt</div><div class="line">Origin 1: D:\work\\libs\httpmime-4.1.3.jar</div><div class="line">Origin 2: D:\work\\libs\ant.jar</div><div class="line">You can ignore those files in your build.gradle:</div><div class="line">android &#123;</div><div class="line"> packagingOptions &#123;</div><div class="line">   exclude &apos;META-INF/LICENSE.txt&apos;</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">Error:Execution failed for task &apos;::packageDebug&apos;.</div><div class="line">&gt; Duplicate files copied in APK META-INF/LICENSE.txt</div><div class="line">File 1: D:\work\libs\httpmime-4.1.3.jar</div><div class="line">File 2: D:\work\libs\ant.jar</div></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h4><p>在build.gradle中android {}中添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">packagingOptions &#123;</div><div class="line">    exclude &apos;META-INF/DEPENDENCIES.txt&apos;</div><div class="line">    exclude &apos;META-INF/LICENSE.txt&apos;</div><div class="line">    exclude &apos;META-INF/NOTICE.txt&apos;</div><div class="line">    exclude &apos;META-INF/NOTICE&apos;</div><div class="line">    exclude &apos;META-INF/LICENSE&apos;</div><div class="line">    exclude &apos;META-INF/DEPENDENCIES&apos;</div><div class="line">    exclude &apos;META-INF/notice.txt&apos;</div><div class="line">    exclude &apos;META-INF/license.txt&apos;</div><div class="line">    exclude &apos;META-INF/dependencies.txt&apos;</div><div class="line">    exclude &apos;META-INF/LGPL2.1&apos;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>注：根据jar包中许可等文件选择性忽略即可</p>
+<h3 id="3-编译错误2"><a href="#3-编译错误2" class="headerlink" title="3) 编译错误2"></a>3) 编译错误2</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">importing a project creates a full copy</div><div class="line">Error:(16, 0) Cause: startup failed:</div><div class="line">build file &apos;D:\mc_works\\build.gradle&apos;: 16: unexpected char: &apos;\&apos; @ line 16, column 33.</div><div class="line">               java.srcDirs = [&apos;src\main\java&apos;]</div></pre></td></tr></table></figure>
+<blockquote>
+<h4 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h4><p>gradle里 “\” 改为 “/”</p>
+</blockquote>
+<h3 id="4-编译错误3-无法编译"><a href="#4-编译错误3-无法编译" class="headerlink" title="4) 编译错误3 - 无法编译"></a>4) 编译错误3 - 无法编译</h3><blockquote>
+<h4 id="解决方案-3"><a href="#解决方案-3" class="headerlink" title="解决方案"></a>解决方案</h4><p>在项目主gradle添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">allprojects &#123;</div><div class="line">    repositories &#123;</div><div class="line">        jcenter()</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="5-运行出错-jni-lib-load失败，jni未成功引入项目导致"><a href="#5-运行出错-jni-lib-load失败，jni未成功引入项目导致" class="headerlink" title="5) 运行出错-jni lib load失败，jni未成功引入项目导致"></a>5) 运行出错-jni lib load失败，jni未成功引入项目导致</h3><blockquote>
+<h4 id="解决方案-4"><a href="#解决方案-4" class="headerlink" title="解决方案"></a>解决方案</h4><p>在build.gradle里添加下面配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">sourceSets &#123;</div><div class="line">    main &#123;</div><div class="line">jniLibs.srcDirs = [&apos;libs&apos;]</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="6-原项目根目录下有jni目录，可能触发自动编译ndk"><a href="#6-原项目根目录下有jni目录，可能触发自动编译ndk" class="headerlink" title="6) 原项目根目录下有jni目录，可能触发自动编译ndk"></a>6) 原项目根目录下有jni目录，可能触发自动编译ndk</h3><blockquote>
+<h4 id="解决方案-5"><a href="#解决方案-5" class="headerlink" title="解决方案"></a>解决方案</h4><p>gradle中添加下面红色部分即可避免触发ndk编译， jni.srcDirs设为空<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    compileSdkVersion 19</div><div class="line">    buildToolsVersion &quot;23.0.0 rc3&quot;</div><div class="line">    </div><div class="line">    defaultConfig &#123;</div><div class="line">        applicationId &quot;com.xxx&quot;</div><div class="line">        minSdkVersion 15</div><div class="line">        targetSdkVersion 19</div><div class="line">        sourceSets.main &#123;</div><div class="line">            jni.srcDirs = []</div><div class="line">            jniLibs.srcDir &apos;src/main/libs&apos;</div><div class="line">        &#125;</div><div class="line">    </div><div class="line">    .....</div><div class="line">    </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">Android</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/09/21/android1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-diary8" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -568,6 +735,74 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2016/09/03/diary8/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-dev2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/20/dev2/">Git命令备忘</a>
+    </h1>
+  
+
+        
+        <a href="/2016/08/20/dev2/" class="archive-article-date">
+  	<time datetime="2016-08-20T04:51:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-08-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="远程项目获取-克隆"><a href="#远程项目获取-克隆" class="headerlink" title="远程项目获取(克隆)"></a>远程项目获取(克隆)</h3><p>syntax:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git clone &lt;版本库的网址&gt;</div><div class="line">$ git clone &lt;版本库的网址&gt; &lt;本地目录名&gt;</div></pre></td></tr></table></figure></p>
+<p>example:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/jquery/jquery.git</div><div class="line">$ git clone http[s]://example.com/path/to/repo.git/</div><div class="line">$ git clone ssh://example.com/path/to/repo.git/</div><div class="line">$ git clone git://example.com/path/to/repo.git/</div><div class="line">$ git clone /opt/git/project.git </div><div class="line">$ git clone file:///opt/git/project.git</div><div class="line">$ git clone ftp[s]://example.com/path/to/repo.git/</div><div class="line">$ git clone rsync://example.com/path/to/repo.git/</div></pre></td></tr></table></figure></p>
+<h3 id="代码提交"><a href="#代码提交" class="headerlink" title="代码提交"></a>代码提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ git pull</div><div class="line">$ git add .</div><div class="line">$ git commit -m &quot;update project&quot;</div><div class="line">$ git push origin master</div></pre></td></tr></table></figure>
+<h3 id="打标签"><a href="#打标签" class="headerlink" title="打标签"></a>打标签</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ git tag</div><div class="line">$ git tag -d 1.0</div><div class="line">$ git push origin --delete tag 1.0</div><div class="line">$ git tag 1.0</div><div class="line">$ git push --tags</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2016/08/20/dev2/">展开全文 >></a>
         </p>
       
 
@@ -723,230 +958,9 @@
 
 
   
-    <article id="post-diary5" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/02/25/diary5/">2015年02月25日</a>
-    </h1>
-  
-
-        
-        <a href="/2015/02/25/diary5/" class="archive-article-date">
-  	<time datetime="2015-02-24T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-02-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="自省"><a href="#自省" class="headerlink" title="自省"></a>自省</h2><blockquote>
-<ol>
-<li>开发工作中，最主要的还是个人实力的提高；</li>
-<li>很多东西，不仅要会，还要精；</li>
-<li>还要学会自己去学习，不然往往很多东西其实你并不具备，却夜郎自大！</li>
-</ol>
-</blockquote>
-<h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><h3 id="自身问题"><a href="#自身问题" class="headerlink" title="自身问题"></a>自身问题</h3><ol>
-<li>主要是因为自己太懒；</li>
-<li>工作中很多问题往往是技术上或者业务理解上的，这个需要知识和经验的积累；</li>
-<li>还是不够努力，以后出现过的问题记录下来，避免重复出现。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/02/25/diary5/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-diary4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/09/23/diary4/">2014年09月23日</a>
-    </h1>
-  
-
-        
-        <a href="/2014/09/23/diary4/" class="archive-article-date">
-  	<time datetime="2014-09-22T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-23</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><h3 id="工作态度"><a href="#工作态度" class="headerlink" title="工作态度"></a>工作态度</h3><ol>
-<li>在公司开发，要完成自己身份上的转变，你不再是在校的学生，而领导也不再是纠错的老师，每个分配的任务，都要尽自己最大的能力去开发，并避免错误出现，如果你不能给公司带来收益，反而带来一堆的BUG，前途可想而知……；</li>
-<li>代码的质量问题，开发过程中，不要只想着如何去完成需求，还要想着在完成需求的同时，怎样优化自己的代码，让自己的代码更强，甚至可以循环利用，逻辑上的错误问题千万不要出现；</li>
-<li>多用不同的角度去看待开发问题，学会以客户的角度去开发，让实现的功能更智能化，让各种提示信息更贴近人们的需要；</li>
-<li>代码规范问题依然是重点。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/09/23/diary4/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-diary3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2014/09/18/diary3/">2014年09月18日</a>
-    </h1>
-  
-
-        
-        <a href="/2014/09/18/diary3/" class="archive-article-date">
-  	<time datetime="2014-09-17T16:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2014-09-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="问题总结"><a href="#问题总结" class="headerlink" title="问题总结"></a>问题总结</h2><h3 id="怎样减少BUG问题"><a href="#怎样减少BUG问题" class="headerlink" title="怎样减少BUG问题"></a>怎样减少BUG问题</h3><ol>
-<li>所有编码按要求去做CheckList；</li>
-<li>多做测试，尽可能的不要自己去测试自己的代码(总认为自己没啥问题～(0。0)～)，可以利用自动化测试工具。<h3 id="代码规范"><a href="#代码规范" class="headerlink" title="代码规范"></a>代码规范</h3></li>
-<li>页面注意问题：多余空行、多余标记、多余加载、编码规范、页面ID命名带项目该模块的编号；</li>
-<li>JS注意问题：全局变量命名空间统一、变量命名规范化（一般由两个或多个英语单词组成首单词用名词第二个单词首字母大写）、方法命名规范化（一般由两个或多个英语单词组成首单词用动词第二个单词首字母大写）、注释规范化；</li>
-<li>类注意问题：常量定义规范，代码基本上能加注释的地方都加上注释，为了自己以后能懂，也为了别人开发时能看懂，不允许在方法运行中声明变量，应统一在起始处全部声明。</li>
-<li>CheckList、版本控制需谨慎。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2014/09/18/diary3/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 
@@ -1038,6 +1052,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">Android</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">开发笔记</a>
               </li>
              
@@ -1046,7 +1064,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">C/C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">日记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1059,6 +1085,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">心默言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
              
               <li class="article-tag-list-item">
