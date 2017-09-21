@@ -370,6 +370,79 @@
 
 
   
+    <article id="post-c2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/03/18/c2/">错误C1083解决(VS2010及以上)</a>
+    </h1>
+  
+
+        
+        <a href="/2015/03/18/c2/" class="archive-article-date">
+  	<time datetime="2015-03-18T03:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>“error C1083”这个错误是因为VS中C/C++常规配置中加载头文件的路径问题。</p>
+<blockquote>
+<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>1) 右键查看该项目的属性<br>2) 点击属性——〉配置属性  ——〉C/C++  ——〉  常规  ——〉附加包含目录 ——〉编辑<br>3) 添加<br>$(ProjectDir) //工程目录<br>$(ProjectDir)inc //工程子目录</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2015/03/18/c2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-c1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -428,79 +501,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2015/03/18/c1/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
-    <article id="post-c2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/18/c2/">错误C1083解决(VS2010及以上)</a>
-    </h1>
-  
-
-        
-        <a href="/2015/03/18/c2/" class="archive-article-date">
-  	<time datetime="2015-03-18T03:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2015-03-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>“error C1083”这个错误是因为VS中C/C++常规配置中加载头文件的路径问题。</p>
-<blockquote>
-<h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p>1) 右键查看该项目的属性<br>2) 点击属性——〉配置属性  ——〉C/C++  ——〉  常规  ——〉附加包含目录 ——〉编辑<br>3) 添加<br>$(ProjectDir) //工程目录<br>$(ProjectDir)inc //工程子目录</p>
-</blockquote>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">开发笔记</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工作</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">C/C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2015/03/18/c2/">展开全文 >></a>
         </p>
       
 
@@ -1029,15 +1029,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Unix/Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">碎语</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Python</a>
               </li>
             
             <div class="clearfix"></div>
