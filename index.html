@@ -103,9 +103,9 @@
         },
       },
       qrcode: {
-        enable: false,
-        type: 'url',
-        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+        enable: true,
+        type: 'image',
+        image: '/images/theme/wx.jpg',
       },
       toc: {
         enable: true
@@ -143,6 +143,8 @@
     <div class="left">
       
       
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
       
         <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
       
@@ -152,6 +154,8 @@
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
+    
+      <div id="qrcode-navbar"></div>
     
   </nav>
 
@@ -227,7 +231,7 @@
   <div class="post-wrap">
     
     <a href="/2023/10/08/hello-world/" class="post-image">
-      <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+      <img   class="lazyload" data-original="/images/theme/post-image2.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
     </a>
     <div class="post-content">
       <div class="post-content-wrap">
@@ -311,6 +315,10 @@
 
 
 
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 
 
 

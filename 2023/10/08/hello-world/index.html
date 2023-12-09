@@ -103,9 +103,9 @@
         },
       },
       qrcode: {
-        enable: false,
-        type: 'url',
-        image: 'https://pic.izhaoo.com/weapp-code.jpg',
+        enable: true,
+        type: 'image',
+        image: '/images/theme/wx.jpg',
       },
       toc: {
         enable: true
@@ -145,6 +145,8 @@
         <i class="iconfont iconhome j-navbar-back-home"></i>
       
       
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
       
         <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
       
@@ -154,6 +156,8 @@
     <div class="right">
       <i class="iconfont iconmenu j-navbar-menu"></i>
     </div>
+    
+      <div id="qrcode-navbar"></div>
     
   </nav>
 
@@ -188,7 +192,7 @@
       <div class="col-xl-6"><article class="article">
   <div class="wrap">
     <section class="head">
-  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <img   class="lazyload" data-original="/images/theme/post-image2.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
   <div class="head-mask">
     <h1 class="head-title">Hello World</h1>
     <div class="head-info">
@@ -307,6 +311,10 @@
 
 
 
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
 
 
 
