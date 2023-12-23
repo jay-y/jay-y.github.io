@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<html lang="cn" color-mode=light>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>基于React+Vite+Electron搭建桌面程序项目实践 - 君子不器</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="google" content="notranslate" />
+  
+  <meta name="description" content="项目背景项目需要开发桌面程序，考虑到项目的跨平台性和需...">
+  <meta name="author" content="燕君临">
+  <link rel="icon" href="/images/icons/favicon-16x16.png" type="image/png" sizes="16x16">
+  <link rel="icon" href="/images/icons/favicon-32x32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="/images/icons/apple-touch-icon.png" sizes="180x180">
+  <meta rel="mask-icon" href="/images/icons/stun-logo.svg" color="#333333">
+  
+    <meta rel="msapplication-TileImage" content="/images/icons/favicon-144x144.png">
+    <meta rel="msapplication-TileColor" content="#000000">
+  
+
+  
+<link rel="stylesheet" href="/css/style.css">
+
+
+  
+    
+<link rel="stylesheet" href="https://at.alicdn.com/t/font_1445822_p6ry5n7lrr.css">
+
+  
+
+  
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+
+  
+
+  
+    
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/xcode.min.css" name="highlight-style" mode="light">
+
+      
+        
+        
+<link rel="stylesheet" href="https://cdn.bootcss.com/highlight.js/9.18.1/styles/solarized-dark.min.css" name="highlight-style" mode="dark">
+
+      
+  
+
+  <script>
+    var CONFIG = window.CONFIG || {};
+    var ZHAOO = window.ZHAOO || {};
+    CONFIG = {
+      isHome: false,
+      fancybox: true,
+      pjax: false,
+      loading: {
+        gif: '/images/theme/loading.gif',
+        lottie: ''
+      },
+      lazyload: {
+        enable: true,
+        only_post: 'false',
+        loading: {
+          gif: '/images/theme/loading.gif',
+          lottie: ''
+        }
+      },
+      donate: {
+        enable: false,
+        alipay: '',
+        wechat: ''
+      },
+      galleries: {
+        enable: false
+      },
+      fab: {
+        enable: true,
+        always_show: false
+      },
+      carrier: {
+        enable: true
+      },
+      daovoice: {
+        enable: false
+      },
+      preview: {
+        background: {
+          default: '',
+          api: ''
+        },
+        motto: {
+          default: '我在开了灯的床头下，想问问自己的心啊。',
+          typing: true,
+          api: 'https://v2.jinrishici.com/one.json',
+          data_contents: '["data","content"]'
+        },
+      },
+      qrcode: {
+        enable: true,
+        type: 'image',
+        image: '/images/theme/wx.jpg',
+      },
+      toc: {
+        enable: true
+      },
+      scrollbar: {
+        type: 'default'
+      },
+      notification: {
+        enable: false,
+        delay: 4500,
+        list: '',
+        page_white_list: '',
+        page_black_list: ''
+      },
+      search: {
+        enable: false,
+        path: ''
+      }
+    }
+  </script>
+
+  
+
+  
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+
+<body class="lock-screen">
+  <div class="loading" id="loading"></div>
+  
+    
+
+
+  <nav class="navbar">
+    <div class="left">
+      
+        <i class="iconfont iconhome j-navbar-back-home"></i>
+      
+      
+        <i class="iconfont iconqrcode j-navbar-qrcode"></i>
+      
+      
+        <i class="iconfont iconmoono" id="color-toggle" color-toggle="light"></i>
+      
+      
+    </div>
+    <div class="center">基于React+Vite+Electron搭建桌面程序项目实践</div>
+    <div class="right">
+      <i class="iconfont iconmenu j-navbar-menu"></i>
+    </div>
+    
+      <div id="qrcode-navbar"></div>
+    
+  </nav>
+
+  
+  
+
+<nav class="menu">
+  <div class="menu-container">
+    <div class="menu-close">
+      <i class="iconfont iconbaseline-close-px"></i>
+    </div>
+    <ul class="menu-content"><li class="menu-item">
+        <a href="/ " class="underline "> 首页</a>
+      </li><li class="menu-item">
+        <a href="/archives/ " class="underline "> 归档</a>
+      </li><li class="menu-item">
+        <a href="/tags/ " class="underline "> 标签</a>
+      </li><li class="menu-item">
+        <a href="/categories/ " class="underline "> 分类</a>
+      </li><li class="menu-item">
+        <a href="/about/ " class="underline "> 关于</a>
+      </li></ul>
+    
+      <div class="menu-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+    
+  </div>
+</nav>
+  <main id="main">
+  <div class="article-wrap">
+    <div class="row container">
+      <div class="col-xl-3"></div>
+      <div class="col-xl-6"><article class="article">
+  <div class="wrap">
+    <section class="head">
+  <img   class="lazyload" data-original="/images/theme/post-image.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="  draggable="false">
+  <div class="head-mask">
+    <h1 class="head-title">基于React+Vite+Electron搭建桌面程序项目实践</h1>
+    <div class="head-info">
+      <span class="post-info-item"><i class="iconfont iconcalendar"></i>December 22, 2023</span>
+      
+      <span class="post-info-item"><i class="iconfont iconfont-size"></i>5715</span>
+    </div>
+  </div>
+</section>
+    <section class="main">
+      <section class="content">
+        
+        <h2 id="项目背景"><a href="#项目背景" class="headerlink" title="项目背景"></a>项目背景</h2><p>项目需要开发桌面程序，考虑到项目的跨平台性和需求迭代速度，使用Electron作为桌面程序的开发框架，使用React作为前端框架，使用Vite作为前端构建工具，这里记录一下项目的搭建过程。</p>
+<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><h3 id="1-技术栈"><a href="#1-技术栈" class="headerlink" title="1. 技术栈"></a>1. 技术栈</h3><ul>
+<li>node 20.10.0</li>
+<li>react 18.2.0</li>
+<li>vite 5.0.8</li>
+<li>electron 28.1.0</li>
+</ul>
+<h3 id="2-目录结构"><a href="#2-目录结构" class="headerlink" title="2. 目录结构"></a>2. 目录结构</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs shell">├── README.md<br>├── electron-builder.json           # electron打包配置<br>├── electron-main.js                # electron入口文件<br>├── electron-preload.js             # electron预加载文件<br>├── index.html                      # vite打包模版文件<br>├── package.json                    # 项目依赖<br>├── public<br>│   └── vite.svg<br>├── src<br>│   ├── App.css                     # 应用样式<br>│   ├── App.tsx                     # 应用文件<br>│   ├── assets                      # 静态资源<br>│   ├── index.css                   # 全局样式<br>│   ├── main.tsx                    # vite入口文件<br>│   └── vite-env.d.ts               # vite环境变量<br>├── tsconfig.json<br>├── tsconfig.node.json<br>├── vite.config.ts<br>└── yarn.lock<br></code></pre></td></tr></table></figure>
+
+<h2 id="项目搭建"><a href="#项目搭建" class="headerlink" title="项目搭建"></a>项目搭建</h2><h3 id="1-创建项目"><a href="#1-创建项目" class="headerlink" title="1. 创建项目"></a>1. 创建项目</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">使用yarn创建项目</span><br>yarn create vite mos<br><span class="hljs-meta prompt_"># </span><span class="language-bash">打开项目</span><br>cd mos<br><span class="hljs-meta prompt_"># </span><span class="language-bash">安装依赖</span><br>yarn<br><span class="hljs-meta prompt_"># </span><span class="language-bash">启动项目</span><br>yarn dev<br></code></pre></td></tr></table></figure>
+
+<p><img    class="lazyload" data-original="/images/a57a274e5b8b21422a6ec5cb47d0deed/1703239841656.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">使用yarn创建项目</span></p>
+<h3 id="2-安装electron相关依赖"><a href="#2-安装electron相关依赖" class="headerlink" title="2. 安装electron相关依赖"></a>2. 安装electron相关依赖</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs shell"><span class="hljs-meta prompt_"># </span><span class="language-bash">安装electron</span><br>yarn add -D electron<br><span class="hljs-meta prompt_"># </span><span class="language-bash">安装electron-builder，用于构建打包可安装程序</span><br>yarn add -D electron-builder<br><span class="hljs-meta prompt_"># </span><span class="language-bash">安装electron-devtools-installer，用于开发调试electron项目</span><br>yarn add -D electron-devtools-installer<br><span class="hljs-meta prompt_"># </span><span class="language-bash">安装electron和vite的桥接插件vite-plugin-electron，用于在渲染进程中使用框架功能</span><br>yarn add -D vite-plugin-electron<br></code></pre></td></tr></table></figure>
+
+<h3 id="3-配置electron"><a href="#3-配置electron" class="headerlink" title="3. 配置electron"></a>3. 配置electron</h3><h4 id="3-1-编写electron预加载文件"><a href="#3-1-编写electron预加载文件" class="headerlink" title="3.1 编写electron预加载文件"></a>3.1 编写electron预加载文件</h4><p>在项目根目录下创建electron预加载文件<code>electron-preload.mjs</code>，内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * The preload script runs before. It has access to web APIs</span><br><span class="hljs-comment"> * as well as Electron&#x27;s renderer process modules and some</span><br><span class="hljs-comment"> * polyfilled Node.js functions.</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * https://www.electronjs.org/docs/latest/tutorial/sandbox</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">import</span> process <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;process&#x27;</span><br><br><span class="hljs-variable language_">window</span>.<span class="hljs-title function_">addEventListener</span>(<span class="hljs-string">&#x27;DOMContentLoaded&#x27;</span>, <span class="hljs-function">() =&gt;</span> &#123;<br>    <span class="hljs-keyword">const</span> <span class="hljs-title function_">replaceText</span> = (<span class="hljs-params">selector, text</span>) =&gt; &#123;<br>      <span class="hljs-keyword">const</span> element = <span class="hljs-variable language_">document</span>.<span class="hljs-title function_">getElementById</span>(selector)<br>      <span class="hljs-keyword">if</span> (element) element.<span class="hljs-property">innerText</span> = text<br>    &#125;<br>  <br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> type <span class="hljs-keyword">of</span> [<span class="hljs-string">&#x27;chrome&#x27;</span>, <span class="hljs-string">&#x27;node&#x27;</span>, <span class="hljs-string">&#x27;electron&#x27;</span>]) &#123;<br>      <span class="hljs-title function_">replaceText</span>(<span class="hljs-string">`<span class="hljs-subst">$&#123;type&#125;</span>-version`</span>, process.<span class="hljs-property">versions</span>[type])<br>    &#125;<br>  &#125;<br>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-2-编写electron入口文件"><a href="#3-2-编写electron入口文件" class="headerlink" title="3.2 编写electron入口文件"></a>3.2 编写electron入口文件</h4><p>在项目根目录下创建electron入口文件<code>electron-main.js</code>，内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">import</span> path <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;path&#x27;</span><br><span class="hljs-keyword">import</span> process <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;process&#x27;</span><br><br><span class="hljs-keyword">import</span> &#123; app, <span class="hljs-title class_">BrowserWindow</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;electron&#x27;</span><br><span class="hljs-keyword">import</span> &#123; join &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;node:path&#x27;</span><br><br><span class="hljs-comment">// 关闭安全警告</span><br><span class="hljs-comment">// process.env[&#x27;ELECTRON_DISABLE_SECURITY_WARNINGS&#x27;] = &#x27;true&#x27;;</span><br><br><span class="hljs-keyword">const</span> __dirname = path.<span class="hljs-title function_">resolve</span>();<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">createWindow</span> () &#123;<br>  <span class="hljs-keyword">const</span> win = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BrowserWindow</span>(&#123;<br>    <span class="hljs-attr">width</span>: <span class="hljs-number">800</span>,<br>    <span class="hljs-attr">height</span>: <span class="hljs-number">600</span>,<br>    <span class="hljs-attr">webPreferences</span>: &#123;<br>      <span class="hljs-attr">sandbox</span>: <span class="hljs-literal">false</span>,<br>      <span class="hljs-attr">preload</span>: process.<span class="hljs-property">env</span>.<span class="hljs-property">VITE_ELECTRON_PRELOAD_PATH</span> ? <span class="hljs-title function_">join</span>(__dirname, process.<span class="hljs-property">env</span>.<span class="hljs-property">VITE_ELECTRON_PRELOAD_PATH</span>) : <span class="hljs-string">&#x27;electron-preload.mjs&#x27;</span><br>    &#125;<br>  &#125;)<br><br>  <span class="hljs-comment">// development模式</span><br>  <span class="hljs-keyword">if</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">VITE_DEV_SERVER_URL</span>) &#123;<br>      win.<span class="hljs-title function_">loadURL</span>(process.<span class="hljs-property">env</span>.<span class="hljs-property">VITE_DEV_SERVER_URL</span>)<br>      <span class="hljs-comment">// 开启调试台</span><br>      win.<span class="hljs-property">webContents</span>.<span class="hljs-title function_">openDevTools</span>()<br>  &#125;<span class="hljs-keyword">else</span> &#123;<br>      win.<span class="hljs-title function_">loadFile</span>(<span class="hljs-string">&#x27;dist/index.html&#x27;</span>)<br>      <span class="hljs-comment">// 开启调试台</span><br>      <span class="hljs-comment">// win.webContents.openDevTools()</span><br>  &#125;<br>&#125;<br><br>app.<span class="hljs-title function_">whenReady</span>().<span class="hljs-title function_">then</span>(<span class="hljs-function">() =&gt;</span> &#123;<br>  <span class="hljs-title function_">createWindow</span>()<br>  app.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;activate&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-title class_">BrowserWindow</span>.<span class="hljs-title function_">getAllWindows</span>().<span class="hljs-property">length</span> === <span class="hljs-number">0</span>) <span class="hljs-title function_">createWindow</span>()<br>  &#125;)<br>&#125;)<br><br>app.<span class="hljs-title function_">on</span>(<span class="hljs-string">&#x27;window-all-closed&#x27;</span>, <span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) &#123;<br>  <span class="hljs-keyword">if</span> (process.<span class="hljs-property">platform</span> !== <span class="hljs-string">&#x27;darwin&#x27;</span>) app.<span class="hljs-title function_">quit</span>()<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h4 id="3-3-配置electron入口文件"><a href="#3-3-配置electron入口文件" class="headerlink" title="3.3 配置electron入口文件"></a>3.3 配置electron入口文件</h4><p>修改<code>package.json</code>文件，添加electron入口文件配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  ...<br>  <span class="hljs-attr">&quot;main&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;electron-main.js&quot;</span><span class="hljs-punctuation">,</span><br>  ...<br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="3-4-配置electron打包文件"><a href="#3-4-配置electron打包文件" class="headerlink" title="3.4 配置electron打包文件"></a>3.4 配置electron打包文件</h4><p>在项目根目录下创建electron配置文件<code>electron-builder.json</code>，内容如下：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>    <span class="hljs-attr">&quot;appId&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;com.example.mos&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;productName&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;mos&quot;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;directories&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;output&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;build&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;files&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-string">&quot;dist/&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;electron-main.js&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-string">&quot;electron-preload.mjs&quot;</span><br>    <span class="hljs-punctuation">]</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;mac&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;target&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;dmg&quot;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;category&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;public.app-category.developer-tools&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;dmg&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>      <span class="hljs-attr">&quot;contents&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">[</span><br>        <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;x&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">130</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;y&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">220</span><br>        <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>        <span class="hljs-punctuation">&#123;</span><br>            <span class="hljs-attr">&quot;x&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">410</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;y&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-number">220</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;type&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;link&quot;</span><span class="hljs-punctuation">,</span><br>            <span class="hljs-attr">&quot;path&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;/Applications&quot;</span><br>        <span class="hljs-punctuation">&#125;</span><br>      <span class="hljs-punctuation">]</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;win&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;target&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;nsis&quot;</span><br>    <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>    <span class="hljs-attr">&quot;nsis&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>        <span class="hljs-attr">&quot;oneClick&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">false</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;perMachine&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><span class="hljs-punctuation">,</span><br>        <span class="hljs-attr">&quot;allowToChangeInstallationDirectory&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-literal"><span class="hljs-keyword">true</span></span><br>    <span class="hljs-punctuation">&#125;</span><br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+<p>修改<code>package.json</code>文件，添加electron打包脚本配置：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs json"><span class="hljs-punctuation">&#123;</span><br>  ...<br>  <span class="hljs-attr">&quot;scripts&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-punctuation">&#123;</span><br>    ...<br>    <span class="hljs-attr">&quot;pack&quot;</span><span class="hljs-punctuation">:</span> <span class="hljs-string">&quot;yarn run build &amp;&amp; electron-builder --config=./electron-builder.json&quot;</span><br>  <span class="hljs-punctuation">&#125;</span><span class="hljs-punctuation">,</span><br>  ...<br><span class="hljs-punctuation">&#125;</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="4-配置vite"><a href="#4-配置vite" class="headerlink" title="4. 配置vite"></a>4. 配置vite</h3><h4 id="4-1-配置vite环境变量"><a href="#4-1-配置vite环境变量" class="headerlink" title="4.1 配置vite环境变量"></a>4.1 配置vite环境变量</h4><p>在项目根目录下创建<code>.env.development</code>文件，内容如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs conf">VITE_ELECTRON_PRELOAD_PATH=electron-preload.mjs<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-2-修改vite-config-ts文件"><a href="#4-2-修改vite-config-ts文件" class="headerlink" title="4.2 修改vite.config.ts文件"></a>4.2 修改vite.config.ts文件</h4><p>修改<code>vite.config.ts</code>文件，内容如下：</p>
+<figure class="highlight ts"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs ts"><span class="hljs-keyword">import</span> &#123; defineConfig, loadEnv &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vite&#x27;</span><br><span class="hljs-keyword">import</span> react <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;@vitejs/plugin-react-swc&#x27;</span><br><span class="hljs-keyword">import</span> electron <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vite-plugin-electron&#x27;</span><br><br><span class="hljs-comment">// https://vitejs.dev/config/</span><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-title function_">defineConfig</span>(<span class="hljs-function">(<span class="hljs-params">&#123; mode &#125;</span>) =&gt;</span> &#123;<br>  <span class="hljs-keyword">const</span> viteEnv = <span class="hljs-title function_">loadEnv</span>(mode, process.<span class="hljs-title function_">cwd</span>())<br>  process.<span class="hljs-property">env</span> = &#123; ...process.<span class="hljs-property">env</span>, ...viteEnv &#125;<br><br>  <span class="hljs-keyword">return</span> &#123;<br>      <span class="hljs-attr">plugins</span>: [<br>          <span class="hljs-title function_">react</span>(),<br>          <span class="hljs-title function_">electron</span>(&#123;<br>              <span class="hljs-attr">entry</span>: <span class="hljs-string">&#x27;electron-main.js&#x27;</span>,<br>          &#125;)<br>      ]<br>  &#125;<br>&#125;)<br></code></pre></td></tr></table></figure>
+
+<h2 id="项目运行"><a href="#项目运行" class="headerlink" title="项目运行"></a>项目运行</h2><h3 id="1-开发启动"><a href="#1-开发启动" class="headerlink" title="1. 开发启动"></a>1. 开发启动</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yarn dev<br></code></pre></td></tr></table></figure>
+
+<p><img    class="lazyload" data-original="/images/a57a274e5b8b21422a6ec5cb47d0deed/1703306000423.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">启动效果</span></p>
+<h3 id="2-打包可执行程序"><a href="#2-打包可执行程序" class="headerlink" title="2. 打包可执行程序"></a>2. 打包可执行程序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yarn pack<br></code></pre></td></tr></table></figure>
+
+<p><img    class="lazyload" data-original="/images/a57a274e5b8b21422a6ec5cb47d0deed/1703305902673.jpg" src="data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg=="   ><span class="image-caption">打包效果</span></p>
+
+      </section>
+      <section class="extra">
+        
+          <ul class="copyright">
+  
+    <li><strong>本文作者：</strong>燕君临</li>
+    <li><strong>本文链接：</strong><a href="https://jay-y.github.io/2023/12/22/%E5%9F%BA%E4%BA%8EReact-Electron%E6%90%AD%E5%BB%BA%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5/index.html" title="https:&#x2F;&#x2F;jay-y.github.io&#x2F;2023&#x2F;12&#x2F;22&#x2F;%E5%9F%BA%E4%BA%8EReact-Electron%E6%90%AD%E5%BB%BA%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5&#x2F;index.html">https:&#x2F;&#x2F;jay-y.github.io&#x2F;2023&#x2F;12&#x2F;22&#x2F;%E5%9F%BA%E4%BA%8EReact-Electron%E6%90%AD%E5%BB%BA%E6%A1%8C%E9%9D%A2%E7%A8%8B%E5%BA%8F%E9%A1%B9%E7%9B%AE%E5%AE%9E%E8%B7%B5&#x2F;index.html</a></li>
+    <li><strong>版权声明：</strong>本博客所有文章均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" title="BY-NC-SA" target="_blank" rel="noopener">BY-NC-SA</a> 许可协议，转载请注明出处！</li>
+  
+</ul>
+        
+        
+        
+  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Electron/" rel="tag">Electron</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vite/" rel="tag">Vite</a></li></ul> 
+
+        
+  <nav class="nav">
+    <a></a>
+    <a href="/2023/10/08/hello-world/">Hello World<i class="iconfont iconright"></i></a>
+  </nav>
+
+      </section>
+      
+    </section>
+  </div>
+</article></div>
+      <div class="col-xl-3">
+        
+          
+  <aside class="toc-wrap">
+    <h3 class="toc-title">文章目录：</h3>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%83%8C%E6%99%AF"><span class="toc-text">项目背景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D"><span class="toc-text">项目介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%8A%80%E6%9C%AF%E6%A0%88"><span class="toc-text">1. 技术栈</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-text">2. 目录结构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA"><span class="toc-text">项目搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%88%9B%E5%BB%BA%E9%A1%B9%E7%9B%AE"><span class="toc-text">1. 创建项目</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85electron%E7%9B%B8%E5%85%B3%E4%BE%9D%E8%B5%96"><span class="toc-text">2. 安装electron相关依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E9%85%8D%E7%BD%AEelectron"><span class="toc-text">3. 配置electron</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%85%8D%E7%BD%AEvite"><span class="toc-text">4. 配置vite</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E8%BF%90%E8%A1%8C"><span class="toc-text">项目运行</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BC%80%E5%8F%91%E5%90%AF%E5%8A%A8"><span class="toc-text">1. 开发启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%89%93%E5%8C%85%E5%8F%AF%E6%89%A7%E8%A1%8C%E7%A8%8B%E5%BA%8F"><span class="toc-text">2. 打包可执行程序</span></a></li></ol></li></ol>
+  </aside>
+
+        
+      </div>
+    </div>
+  </div>
+</main>
+  
+
+<footer class="footer">
+  <div class="footer-social"><a 
+        href="https://github.com/jay-y "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color= '#9f7be1'" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  icongithub-fill "></i>
+      </a><a 
+        href="mailto:jay_y@foxmail.com "
+        target="_blank"
+        class="footer-social-item"
+        onMouseOver="this.style.color=#FF3B00" 
+        onMouseOut="this.style.color='#33333D'">
+          <i class="iconfont  iconmail"></i>
+      </a></div>
+  
+    <div class="footer-copyright"><p>Powered by <a target="_blank" href="https://hexo.io">Hexo</a>  |  Theme - <a target="_blank" href="https://github.com/izhaoo/hexo-theme-zhaoo">zhaoo</a></p></div>
+  
+</footer>
+  
+      <div class="fab fab-plus">
+    <i class="iconfont iconplus"></i>
+  </div>
+  
+  
+  
+  <div class="fab fab-up">
+    <i class="iconfont iconcaret-up"></i>
+  </div>
+  
+  
+  
+    
+<script src="/js/color-mode.js"></script>
+
+  
+  
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script>
+
+
+
+
+  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+  
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+
+
+
+
+<script src="/js/utils.js"></script>
+<script src="/js/script.js"></script>
+
+
+
+
+
+
+
+  <script>
+    (function () {
+      var bp = document.createElement('script');
+      var curProtocol = window.location.protocol.split(':')[0];
+      if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+      } else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+      }
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(bp, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+</html>
